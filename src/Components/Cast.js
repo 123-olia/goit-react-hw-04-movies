@@ -11,11 +11,13 @@ export default class Cast extends Component {
 
   componentDidMount() {
     const movieId = this.props.match.params.movId;
-    // console.log(this.props.match.params);
+    // console.log(movieId);
+
     this.setState({ loading: true });
 
     movieAPI
       .fetchActors(movieId)
+      // .then(console.log)
       .then((actors) => this.setState({ actors: actors.cast }))
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ loading: false }));
@@ -28,8 +30,9 @@ export default class Cast extends Component {
       <>
         {actors && (
           <>
-            <h2>Actors</h2>
             {loading && <Loader />}
+            <h2>Actors</h2>
+
             <ul>
               {actors.map((actor) => (
                 <li key={actor.id}>

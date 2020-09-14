@@ -55,6 +55,8 @@ export default class MovieDetails extends Component {
         </button>
         <br />
 
+        {this.state.error && <p>Error:{this.state.error}</p>}
+
         {movie && (
           <MovieCard
             movie={movie}

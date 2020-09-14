@@ -21,7 +21,9 @@ const fetchDetails = (movieId) => {
 };
 
 const fetchActors = (movieId) => {
-  return fetch(`${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`);
+  return fetch(
+    `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`
+  ).then((resp) => resp.json());
 };
 
 const fetchReviews = (movieId) => {
